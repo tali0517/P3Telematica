@@ -1,0 +1,28 @@
+{
+  "Dhcp4": {
+    "interfaces-config": {
+      "interfaces": ["eth0"] 
+    },
+    "subnet4": [
+      {
+        "pools": [
+          {
+            "pool": "192.168.1.10 - 192.168.1.20"
+          }
+        ],
+        "subnet": "192.168.1.0/24",
+        "option-data": [
+          {
+            "name": "routers",
+            "data": "192.168.1.1"
+          },
+          {
+            "name": "domain-name-servers",
+            "data": "8.8.8.8, 8.8.4.4"
+          }
+        ]
+      }
+    ]
+  }
+}
+

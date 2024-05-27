@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Actualizar paquetes del sistema
+sudo apt update && sudo apt upgrade -y
+
+# Instalar dependencias
+sudo apt install curl -y
+
+# Instalar Mail-in-a-Box
+curl -s https://mailinabox.email/setup.sh | sudo bash
+
+# Configurar DNS (ejemplo)
+# Reemplazar con los valores reales de tu dominio y dirección IP
+echo "mitelematica.edu.co. IN A [TU_DIRECCIÓN_IP_PÚBLICA]" | sudo tee -a /etc/hosts
+echo "mail.mitelematica.edu.co. IN A [TU_DIRECCIÓN_IP_PÚBLICA]" | sudo tee -a /etc/hosts
+
+# Reiniciar servicios (si es necesario)
+sudo systemctl restart systemd-resolved

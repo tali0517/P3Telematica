@@ -1,0 +1,18 @@
+Bash
+# Instalar Squid
+sudo apt install squid
+
+# Configurar Squid (editar /etc/squid/squid.conf)
+acl blocked_sites dstdomain "/etc/squid/blocked_sites.txt"  # Lista de sitios bloqueados
+acl blocked_keywords url_regex "/etc/squid/blocked_keywords.txt"  # Lista de palabras clave bloqueadas
+
+http_access deny blocked_sites
+http_access deny blocked_keywords
+http_access allow all
+
+# Crear archivos de listas de bloqueo
+sudo nano /etc/squid/blocked_sites.txt
+sudo nano /etc/squid/blocked_keywords.txt
+
+# Reiniciar Squid
+sudo systemctl restart squid

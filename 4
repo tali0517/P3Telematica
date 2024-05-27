@@ -1,0 +1,30 @@
+Bash
+#!/bin/bash
+
+# Actualizar paquetes del sistema
+sudo apt update && sudo apt upgrade -y
+
+# Instalar dependencias
+sudo apt install default-jre mysql-server -y
+
+# Descargar Floreant POS (reemplazar con la URL de descarga correcta)
+wget https://download.floreantpos.org/floreantpos-1.4-build-20230918.tar.gz
+tar -xzvf floreantpos-1.4-build-20230918.tar.gz
+cd floreantpos-1.4-build-20230918
+
+# Configurar MySQL
+sudo mysql -u root -p <<EOF
+CREATE DATABASE floreantpos;
+CREATE USER 'floreantpos'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON floreantpos.* TO 'floreantpos'@'localhost';
+FLUSH PRIVILEGES;
+EOF
+
+# Configurar Floreant POS
+echo "database.driver=com.mysql.jdbc.Driver
+database.url=jdbc:mysql://localhost:3306/floreantpos?autoReconnect=true
+database.user=floreantpos
+database.password=password" > ~/.floreantpos/floreantpos.properties
+
+# Iniciar Floreant POS
+./start.sh
