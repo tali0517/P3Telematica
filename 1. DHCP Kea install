@@ -1,3 +1,17 @@
+//sudo apt update
+//sudo apt upgrade -y
+
+//instalar kea 
+/*sudo apt install -y software-properties-common
+sudo add-apt-repository ppa:isc/kea
+sudo apt update
+sudo apt install -y kea-dhcp4-server
+*/
+
+// editar el archivo de configuracion 
+sudo gedit /etc/kea/kea-dhcp4.conf
+
+//DHCP CONFIG PARA SELECCIONAR EL POOL DE REDES A USAR
 {
   "Dhcp4": {
     "interfaces-config": {
@@ -26,3 +40,10 @@
   }
 }
 
+
+
+// Inciar el servidor DHCP
+sudo systemctl start kea-dhcp4-server
+
+//permitir que el servidor inicie 
+sudo systemctl enable kea-dhcp4-server
