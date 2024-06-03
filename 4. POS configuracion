@@ -6,9 +6,10 @@ sudo apt update && sudo apt upgrade -y
 
 # Instalar dependencias
 sudo apt install default-jre mysql-server -y
+sudo apt install openjdk-11-jdk -y
 
 # Descargar Floreant POS (reemplazar con la URL de descarga correcta)
-wget https://download.floreantpos.org/floreantpos-1.4-build-20230918.tar.gz
+wget https://github.com/FloreantPOS/floreantpos/releases/download/v1.4.0/floreantpos-1.4-build-20230918.tar.gz -O floreantpos.tar.gz
 tar -xzvf floreantpos-1.4-build-20230918.tar.gz
 cd floreantpos-1.4-build-20230918
 
