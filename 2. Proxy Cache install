@@ -6,6 +6,8 @@ sudo apt install squid
 acl blocked_sites dstdomain "/etc/squid/blocked_sites.txt"  # Lista de sitios bloqueados
 acl blocked_keywords url_regex "/etc/squid/blocked_keywords.txt"  # Lista de palabras clave bloqueadas
 
+#es importante notar que hay que cambiar
+la direccion ip del puerto con la ip publica de la maquina
 http_access deny blocked_sites
 http_access deny blocked_keywords
 http_access allow all
